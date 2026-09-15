@@ -1,0 +1,96 @@
+﻿@page "/ticktacktoe"
+@rendermode InteractiveServer
+<head>
+    <title>TickTackToe</title>
+    <link rel="stylesheet" href="@Assets["custom/css/ticktacktoe.css"]"/>
+</head>
+<h3>@(!_victory ? "Tick Tack Toe Game" : $"Player {_winner} won!")</h3>
+
+<div class="board">
+    @for (int i = 0; i < 9; i++)
+    {
+        var index = i;
+        <button class="cell" @onclick="() => Handle_Turn(index)">
+            @GetValue(index)
+        </button>
+    }
+</div>
+
+<button class="btn btn-primary" @onclick="() => Reset()">Restart</button>
+
+@code {
+    private string _player = "X";
+    private string[] _board = new string[9];
+    private string _winner = "";
+    private bool _victory = false;
+
+    private void Handle_Turn(int index)
+    {
+        if (_victory)
+        {
+            return;
+        }
+        string temp = _player;
+        Take_Turn(index, temp);
+        GameOver(temp);
+    }
+    private void Take_Turn(int index, string tempPlayer)
+    {
+        if (_board[index] == "X" || _board[index] == "O")
+        {
+            return;
+        }
+        
+        if (_player.Equals("X"))
+        {
+            _player = "O";
+        }
+        else
+        {
+            _player = "X";
+        }
+        _board[index] = tempPlayer;
+    }
+
+    private string GetValue(int index)
+    {
+        return _board[index];
+    }
+
+    private void GameOver(string player)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (_board[3 * i] != null && _board[3 * i] == _board[3 * i + 1] && _board[3 * i] == _board[3 * i + 2])
+                _victory = true;
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (_board[i] != null && _board[i] == _board[i + 3] && _board[i] == _board[i + 6])
+                _victory = true;
+        }
+
+        if (_board[0] != null && _board[0] == _board[4] && _board[0] == _board[8])
+            _victory = true;
+        if (_board[2] != null && _board[2] == _board[4] && _board[2] == _board[6])
+            _victory = true;
+        
+        if (_victory)
+        {
+            _winner = player;
+        }
+    }
+
+    private void Reset()
+    {
+        _board = new string[9];
+        _victory = false;
+        _player = "X";
+    }
+
+    private void AI_turn()
+    {
+        
+    }
+}

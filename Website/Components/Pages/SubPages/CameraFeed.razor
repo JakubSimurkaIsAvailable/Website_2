@@ -1,0 +1,67 @@
+﻿@page "/camerafeed"
+@inject IJSRuntime JSRuntime
+
+<h3>Live Camera Feed</h3>
+
+<div class="camera-container">
+    <video @ref="VideoElement"
+           id="video"
+           autoplay
+           playsinline>
+    </video>
+
+    <canvas id="overlay"
+            width="640"
+            height="480">
+    </canvas>
+</div>
+
+<div class="mt-3">
+    <h4>Recognized sign:</h4>
+
+    <div class="form-control">
+        @RecognizedSign
+    </div>
+</div>
+
+<button class="btn btn-primary mt-2"
+        @onclick="StartCameraAsync">
+    Start Camera
+</button>
+
+@code {
+    private ElementReference VideoElement;
+    private IJSObjectReference? module;
+
+    private string RecognizedSign = "Waiting...";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            module = await JSRuntime.InvokeAsync<IJSObjectReference>(
+                "import",
+                "./lib/custom/dist/js/gesture_recognition.js"
+            );
+        }
+    }
+
+    private async Task StartCameraAsync()
+    {
+        if (module is not null)
+        {
+            await module.InvokeVoidAsync(
+                "startCamera",
+                VideoElement,
+                DotNetObjectReference.Create(this)
+            );
+        }
+    }
+
+    [JSInvokable]
+    public void SetRecognizedSign(string sign)
+    {
+        RecognizedSign = sign;
+        StateHasChanged();
+    }
+}

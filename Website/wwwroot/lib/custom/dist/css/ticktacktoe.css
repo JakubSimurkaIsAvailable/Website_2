@@ -1,0 +1,13 @@
+﻿.board {
+    display: grid;
+    background: #000;
+    grid-template-columns: repeat(3, 60px);
+    gap: 4px;
+    grid-row: 3;
+    width: fit-content;
+}
+
+.cell {
+    height: 60px;
+    font-size: 24px;
+}
