@@ -1,9 +1,11 @@
 ﻿@page "/camera"
 @using Website.Components.Pages.SubPages
 
-
-
 <PageTitle>Gesture recognition</PageTitle>
 
-<button>Hit</button>
-<CameraFeed @rendermode="InteractiveServer" />
+<section class="pixel-shell pixel-panel">
+    <p class="pixel-kicker">Live capture</p>
+    <h1>Hand tracker</h1>
+    <p class="pixel-copy">Start the camera, then hold a sign in frame. Landmarks draw on top of the video.</p>
+    <CameraFeed @rendermode="InteractiveServer" />
+</section>

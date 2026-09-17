@@ -1,10 +1,11 @@
 ﻿@page "/ticktacktoe"
 @rendermode InteractiveServer
-<head>
-    <title>TickTackToe</title>
-    <link rel="stylesheet" href="@Assets["lib/custom/dist/css/ticktacktoe.css"]"/>
-</head>
-<h3>@(!_victory ? "Tick Tack Toe Game" : $"Player {_winner} won!")</h3>
+
+<PageTitle>Tic Tac Toe</PageTitle>
+
+<section class="pixel-shell pixel-panel">
+<p class="pixel-kicker">Arcade board</p>
+<h1>@(!_victory ? "Tic Tac Toe" : $"Player {_winner} won!")</h1>
 
 <div class="board">
     @for (int i = 0; i < 9; i++)
@@ -16,7 +17,8 @@
     }
 </div>
 
-<button class="btn btn-primary" @onclick="() => Reset()">Restart</button>
+<button class="pixel-btn" @onclick="() => Reset()">Restart</button>
+</section>
 
 @code {
     private string _player = "X";

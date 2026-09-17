@@ -1,13 +1,35 @@
 ﻿.board {
     display: grid;
     background: #000;
-    grid-template-columns: repeat(3, 60px);
-    gap: 4px;
-    grid-row: 3;
+    grid-template-columns: repeat(3, 72px);
+    gap: 6px;
     width: fit-content;
+    margin: 1rem 0;
+    padding: 6px;
+    box-shadow:
+        4px 0 0 #2b0f4a,
+        -4px 0 0 #2b0f4a,
+        0 4px 0 #2b0f4a,
+        0 -4px 0 #2b0f4a,
+        8px 0 0 #ffe600,
+        -8px 0 0 #ffe600,
+        0 8px 0 #ffe600,
+        0 -8px 0 #ffe600;
 }
 
 .cell {
-    height: 60px;
-    font-size: 24px;
+    height: 72px;
+    width: 72px;
+    font-family: "Press Start 2P", cursive;
+    font-size: 1.4rem;
+    color: #ffe600;
+    background: #1d1033;
+    border: 0;
+    cursor: pointer;
+    box-shadow:
+        inset 0 0 0 4px #ff2bd6;
+}
+
+.cell:hover {
+    background: #2b1650;
 }
