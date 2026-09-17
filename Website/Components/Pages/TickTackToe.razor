@@ -2,7 +2,7 @@
 @rendermode InteractiveServer
 <head>
     <title>TickTackToe</title>
-    <link rel="stylesheet" href="@Assets["custom/css/ticktacktoe.css"]"/>
+    <link rel="stylesheet" href="@Assets["lib/custom/dist/css/ticktacktoe.css"]"/>
 </head>
 <h3>@(!_victory ? "Tick Tack Toe Game" : $"Player {_winner} won!")</h3>
 
@@ -23,6 +23,7 @@
     private string[] _board = new string[9];
     private string _winner = "";
     private bool _victory = false;
+    private int _turn = 0;
 
     private void Handle_Turn(int index)
     {
@@ -87,9 +88,33 @@
         _board = new string[9];
         _victory = false;
         _player = "X";
+        _turn = 0;
     }
 
     private void AI_turn()
+    {
+        List<int> _Xspaces = new List<int>();
+        List<int> _Ospaces = new List<int>();
+        for (int i = 0; i < _board.Length; i++)
+        {
+            if (_board[i] == "X")
+            {
+                _Xspaces.Add(i);
+            }
+            else if (_board[i] == "O")
+            {
+                _Ospaces.Add(i);
+            }
+        }
+
+        var fake_board = _board;
+        if (_turn == 0)
+        {
+            
+        }
+    }
+
+    private void Block()
     {
         
     }

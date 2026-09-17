@@ -84,4 +84,5 @@ C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\uo8djm
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\cghymkixej-{0}-x3xtvzkzmr-x3xtvzkzmr.gz
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\96egkrdug6-{0}-cttik8casi-cttik8casi.gz
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\4lzu9h6ymj-{0}-erdm2k5u1e-erdm2k5u1e.gz
-C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\gwilt9uw1g-{0}-t8l5u7ecog-t8l5u7ecog.gz
+C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\Website.sourcelink.json
+C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\gwilt9uw1g-{0}-1ym5s571hz-1ym5s571hz.gz
