@@ -131,6 +131,7 @@
         // Opening: one X, no O. Rotate until that X sits at 0 (corner) or 1 (edge).
         if (xSpaces.Count != 1 || oSpaces.Count != 0)
         {
+            Block();
             return;
         }
 
@@ -235,8 +236,76 @@
 
         return index;
     }
+    private static readonly int[][] WinLines =
+    {
+        new[] { 0, 1, 2 }, new[] { 3, 4, 5 }, new[] { 6, 7, 8 }, // rows
+        new[] { 0, 3, 6 }, new[] { 1, 4, 7 }, new[] { 2, 5, 8 }, // columns
+        new[] { 0, 4, 8 }, new[] { 2, 4, 6 }                     // diagonals
+    };
+
+    private readonly Random _rng = new Random();
+
+// Returns the empty index that completes a line for `mark`, or -1 if none.
+    private int FindWinningMove(string mark)
+    {
+        foreach (int[] line in WinLines)
+        {
+            int markCount = 0;
+            int emptyIndex = -1;
+
+            foreach (int i in line)
+            {
+                if (_board[i] == mark)
+                {
+                    markCount++;
+                }
+                else if (string.IsNullOrEmpty(_board[i]))
+                {
+                    emptyIndex = i;
+                }
+            }
+
+            if (markCount == 2 && emptyIndex != -1)
+            {
+                return emptyIndex;
+            }
+        }
+
+        return -1;
+    }
+
     private void Block()
     {
-        
+        // 1. Block the player if X is about to win
+        int move = FindWinningMove("O");
+
+        // 2. Otherwise take a winning move for the AI
+        if (move == -1)
+        {
+            move = FindWinningMove("X");
+        }
+
+        // 3. Otherwise pick a random empty cell
+        if (move == -1)
+        {
+            List<int> empty = new List<int>();
+            for (int i = 0; i < _board.Length; i++)
+            {
+                if (string.IsNullOrEmpty(_board[i]))
+                {
+                    empty.Add(i);
+                }
+            }
+
+            if (empty.Count == 0)
+            {
+                return; // board is full
+            }
+
+            move = empty[_rng.Next(empty.Count)];
+        }
+
+        Take_Turn(move, "O");
+        GameOver("O");
     }
 }
