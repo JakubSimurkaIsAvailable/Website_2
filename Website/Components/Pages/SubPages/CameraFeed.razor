@@ -1,5 +1,4 @@
-﻿@page "/camerafeed"
-@implements IAsyncDisposable
+﻿@implements IAsyncDisposable
 @inject IJSRuntime JSRuntime
 
 <div class="camera-stage">
@@ -11,22 +10,23 @@
     <canvas id="overlay"></canvas>
 </div>
 
-<div class="sign-hud">
-    <p class="pixel-label">Recognized sign</p>
-    <h4 class="pixel-readout">@RecognizedSign</h4>
-</div>
-
-<button class="pixel-btn start-camera" @onclick="StartCameraAsync">
-    Start Camera
-</button>
+@if (ShowStartButton)
+{
+    <button class="pixel-btn start-camera" @onclick="StartCameraAsync">
+        Start Camera
+    </button>
+}
 
 @code {
     private ElementReference VideoElement;
-
     private IJSObjectReference? module;
     private DotNetObjectReference<CameraFeed>? dotNetReference;
 
-    private string RecognizedSign = "Waiting...";
+    /// <summary>Raised whenever the model recognizes a sign.</summary>
+    [Parameter] public EventCallback<string> OnSignRecognized { get; set; }
+
+    /// <summary>Set to false if the host page wants to start the camera itself.</summary>
+    [Parameter] public bool ShowStartButton { get; set; } = true;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -38,7 +38,8 @@
         }
     }
 
-    private async Task StartCameraAsync()
+    // Public so a host page can call it via @ref if it wants its own button.
+    public async Task StartCameraAsync()
     {
         if (module is null)
         {
@@ -48,18 +49,13 @@
 
         dotNetReference ??= DotNetObjectReference.Create(this);
 
-        await module.InvokeVoidAsync(
-            "startCamera",
-            VideoElement,
-            dotNetReference);
+        await module.InvokeVoidAsync("startCamera", VideoElement, dotNetReference);
     }
 
     [JSInvokable]
-    public void SetRecognizedSign(string sign)
+    public async Task SetRecognizedSign(string sign)
     {
-        RecognizedSign = sign;
-
-        InvokeAsync(StateHasChanged);
+        await OnSignRecognized.InvokeAsync(sign);
     }
 
     public async ValueTask DisposeAsync()
@@ -68,14 +64,8 @@
 
         if (module is not null)
         {
-            try
-            {
-                await module.DisposeAsync();
-            }
-            catch
-            {
-                // Component may already have been disposed.
-            }
+            try { await module.DisposeAsync(); }
+            catch { /* circuit may already be gone */ }
         }
     }
 }
