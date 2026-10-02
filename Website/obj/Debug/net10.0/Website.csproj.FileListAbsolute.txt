@@ -22,7 +22,6 @@ C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\scopedcss\Compone
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\scopedcss\Components\Layout\ReconnectModal.razor.rz.scp.css
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\scopedcss\bundle\Website.styles.css
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\scopedcss\projectbundle\Website.bundle.scp.css
-C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\azzpsahhwn-{0}-khy4lop6wu-khy4lop6wu.gz
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\u2hk0xy0oq-{0}-t1cqhe9u97-t1cqhe9u97.gz
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\ax7c15u8yr-{0}-c2jlpeoesf-c2jlpeoesf.gz
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\d660jis39b-{0}-sejl45xvog-sejl45xvog.gz
@@ -80,9 +79,11 @@ C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\refint\Website.dl
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\Website.pdb
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\Website.genruntimeconfig.cache
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\ref\Website.dll
-C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\uo8djmpf6x-{0}-x3xtvzkzmr-x3xtvzkzmr.gz
-C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\cghymkixej-{0}-x3xtvzkzmr-x3xtvzkzmr.gz
-C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\96egkrdug6-{0}-cttik8casi-cttik8casi.gz
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\4lzu9h6ymj-{0}-erdm2k5u1e-erdm2k5u1e.gz
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\Website.sourcelink.json
-C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\gwilt9uw1g-{0}-1ym5s571hz-1ym5s571hz.gz
+C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\scopedcss\Components\Pages\SubPages\CameraFeed.razor.rz.scp.css
+C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\gwilt9uw1g-{0}-pc979482oe-pc979482oe.gz
+C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\uo8djmpf6x-{0}-tvspysbyyt-tvspysbyyt.gz
+C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\cghymkixej-{0}-tvspysbyyt-tvspysbyyt.gz
+C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\azzpsahhwn-{0}-3m8i7fg011-3m8i7fg011.gz
+C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\96egkrdug6-{0}-jesekzea0i-jesekzea0i.gz

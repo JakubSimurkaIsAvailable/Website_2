@@ -43,10 +43,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xOb3RGb3VuZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Jakub/RiderProjects/Website/Website/Components/Pages/SubPages/CameraFeed.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdWJQYWdlc1xDYW1lcmFGZWVkLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Jakub/RiderProjects/Website/Website/Components/Pages/TickTackToe.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUaWNrVGFja1RvZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -66,3 +62,7 @@ build_metadata.AdditionalFiles.CssScope = b-4xpicsu201
 [C:/Users/Jakub/RiderProjects/Website/Website/Components/Layout/ReconnectModal.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcUmVjb25uZWN0TW9kYWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-151i29vo5e
+
+[C:/Users/Jakub/RiderProjects/Website/Website/Components/Pages/SubPages/CameraFeed.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdWJQYWdlc1xDYW1lcmFGZWVkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-cjttbs9vg1
