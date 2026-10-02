@@ -1,23 +1,31 @@
 ﻿@page "/ticktacktoe"
 @rendermode InteractiveServer
+@implements IDisposable
 
 <PageTitle>Tic Tac Toe</PageTitle>
 
-<section class="pixel-shell pixel-panel">
-<p class="pixel-kicker">Arcade board</p>
-<h1>@(!_victory ? "Tic Tac Toe" : $"Player {_winner} won!")</h1>
+<section class="pixel-shell pixel-panel" tabindex="0" @ref="_shell"
+         @onkeydown="OnKeyDown" @onkeyup="OnKeyUp">
+    <p class="pixel-kicker">Arcade board</p>
+    <h1>@(!_victory ? "Tic Tac Toe" : $"Player {_winner} won!")</h1>
 
-<div class="board">
-    @for (int i = 0; i < 9; i++)
-    {
-        var index = i;
-        <button class="cell" @onclick="() => Handle_Turn(index)" style="color: @GetColor(GetValue(index))">
-            @GetValue(index) 
-        </button>
-    }
-</div>
+    <div class="board">
+        @for (int i = 0; i < 9; i++)
+        {
+            var index = i;
+            <button class="cell @(_holdingIndex == index ? "holding" : "")"
+                    style="color: @GetColor(GetValue(index)); --hold-ms: @(HoldMs)ms"
+                    @onpointerdown="() => StartHold(index)"
+                    @onpointerup="CancelHold"
+                    @onpointerleave="CancelHold"
+                    @onpointercancel="CancelHold"
+                    @oncontextmenu:preventDefault="true">
+                @GetValue(index)
+            </button>
+        }
+    </div>
 
-<button class="pixel-btn" @onclick="() => Reset()">Restart</button>
+    <button class="pixel-btn" @onclick="() => Reset()">Restart</button>
 </section>
 
 @code {
@@ -105,6 +113,7 @@
 
     private void Reset()
     {
+        CancelHold();
         _board = new string[9];
         _victory = false;
         _player = "X";
@@ -308,4 +317,84 @@
         Take_Turn(move, "O");
         GameOver("O");
     }
+    private const int HoldMs = 600;
+    private int _holdingIndex = -1;
+    private int _heldKeyIndex = -1;
+    private CancellationTokenSource? _holdCts;
+    private ElementReference _shell;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await _shell.FocusAsync(); // so numpad keys work right away
+        }
+    }
+
+    private async Task StartHold(int index)
+    {
+        if (_victory || !string.IsNullOrEmpty(_board[index]) || _holdingIndex == index)
+        {
+            return;
+        }
+
+        CancelHold();
+        _holdingIndex = index;
+        var cts = new CancellationTokenSource();
+        _holdCts = cts;
+
+        try
+        {
+            await Task.Delay(HoldMs, cts.Token);
+        }
+        catch (TaskCanceledException)
+        {
+            return; // released early
+        }
+
+        _holdingIndex = -1;
+        _holdCts = null;
+        Handle_Turn(index);
+    }
+
+    private void CancelHold()
+    {
+        _holdCts?.Cancel();
+        _holdCts?.Dispose();
+        _holdCts = null;
+        _holdingIndex = -1;
+    }
+
+    private static int NumpadIndex(KeyboardEventArgs e)
+    {
+        // Numpad1..Numpad9 -> cells 0..8 (matches the number shown on each cell)
+        if (e.Code.StartsWith("Numpad") && e.Code.Length == 7 && char.IsDigit(e.Code[6]) && e.Code[6] != '0')
+        {
+            return e.Code[6] - '1';
+        }
+        return -1;
+    }
+
+    private async Task OnKeyDown(KeyboardEventArgs e)
+    {
+        int index = NumpadIndex(e);
+        if (index == -1 || e.Repeat)
+        {
+            return; // ignore other keys and OS key-repeat
+        }
+
+        _heldKeyIndex = index;
+        await StartHold(index);
+    }
+
+    private void OnKeyUp(KeyboardEventArgs e)
+    {
+        if (NumpadIndex(e) == _heldKeyIndex)
+        {
+            _heldKeyIndex = -1;
+            CancelHold();
+        }
+    }
+
+    public void Dispose() => CancelHold();
 }

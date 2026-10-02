@@ -1,0 +1,48 @@
+.camera-stage[b-cjttbs9vg1] {
+    position: relative;
+    display: block;
+    width: min(100%, 720px);
+    aspect-ratio: 4 / 3;
+    margin: 0 auto;
+    background: #000;
+    image-rendering: pixelated;
+    box-shadow:
+        4px 0 0 #2b0f4a,
+        -4px 0 0 #2b0f4a,
+        0 4px 0 #2b0f4a,
+        0 -4px 0 #2b0f4a,
+        8px 0 0 #ff2bd6,
+        -8px 0 0 #ff2bd6,
+        0 8px 0 #ff2bd6,
+        0 -8px 0 #ff2bd6;
+}
+
+.camera-stage video[b-cjttbs9vg1],
+.camera-stage canvas[b-cjttbs9vg1] {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    transform: scaleX(-1);
+}
+
+.camera-stage video[b-cjttbs9vg1] {
+    z-index: 1;
+    background: #000;
+}
+
+.camera-stage canvas[b-cjttbs9vg1] {
+    z-index: 2;
+    pointer-events: none;
+}
+
+.sign-hud[b-cjttbs9vg1] {
+    margin-top: 1.25rem;
+    text-align: center;
+}
+
+.start-camera[b-cjttbs9vg1] {
+    display: block;
+    margin: 1rem auto 0;
+}

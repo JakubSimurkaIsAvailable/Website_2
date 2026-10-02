@@ -82,8 +82,8 @@ C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\ref\Website.dll
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\4lzu9h6ymj-{0}-erdm2k5u1e-erdm2k5u1e.gz
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\Website.sourcelink.json
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\scopedcss\Components\Pages\SubPages\CameraFeed.razor.rz.scp.css
-C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\96egkrdug6-{0}-9ya413wof2-9ya413wof2.gz
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\gwilt9uw1g-{0}-pc979482oe-pc979482oe.gz
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\uo8djmpf6x-{0}-tvspysbyyt-tvspysbyyt.gz
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\cghymkixej-{0}-tvspysbyyt-tvspysbyyt.gz
 C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\azzpsahhwn-{0}-3m8i7fg011-3m8i7fg011.gz
+C:\Users\Jakub\RiderProjects\Website\Website\obj\Debug\net10.0\compressed\96egkrdug6-{0}-jesekzea0i-jesekzea0i.gz
